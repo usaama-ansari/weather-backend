@@ -4,7 +4,7 @@ import { ICityService } from "./ICityService";
 import { IOC_TYPES } from "@Common/constants";
 import { ICityRepository } from "@Infra/dataAccess";
 import { Result } from "@Common/logic";
-import { ApplicationError } from "@Common/errors";
+import { ApplicationError } from "@Common/errorUtils";
 import { CityProps } from "@Common/types";
 
 @injectable()

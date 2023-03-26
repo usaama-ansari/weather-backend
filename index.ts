@@ -1,8 +1,10 @@
-import { Result } from "@Common/logic";
-import { CacheClient, ICacheClient } from "@Lib/CacheClient";
-import { IWeatherClient, WeatherClient } from "@Lib/WeatherClient";
-import { iocContainer } from "@Infra/ioc";
-import { IOC_TYPES } from "@Common/constants"; 
-import { IWeatherService } from "@Services/WeatherService";
+import "reflect-metadata";
+import express, { Application } from "express";
+import { AppBootstrapper } from "@Infra/AppBootstrapper";
+import { Server } from "@Infra/Server";
 
-const weatherService= iocContainer.get<IWeatherService>(IOC_TYPES.WeatherService);
+const app: Application = express();
+const server = new Server(app);
+const appBootstrapper = new AppBootstrapper(app, server);
+
+appBootstrapper.bootstrap();

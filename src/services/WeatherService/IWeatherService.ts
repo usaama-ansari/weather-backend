@@ -1,4 +1,4 @@
-import { ApplicationError } from "@Common/errors";
+import { ApplicationError } from "@Common/errorUtils";
 import { Result } from "@Common/logic";
 import { GenericObject } from "@Common/types";
 

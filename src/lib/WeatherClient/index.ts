@@ -5,7 +5,7 @@ import { IWeatherClient } from "./IWeatherClient";
 import { WEATHER_API_KEY, WEATHER_API_ENDPOINT } from "@Common/config";
 import { Result } from "@Common/logic";
 import { GenericObject } from "@Common/types";
-import { ApplicationError } from "@Common/errors";
+import { ApplicationError } from "@Common/errorUtils";
 import { inject, injectable } from "inversify";
 import { IOC_TYPES } from "@Common/constants";
 
