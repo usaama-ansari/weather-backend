@@ -6,6 +6,11 @@
   "author": "Usaama",
   "license": "MIT",
   "packageManager": "yarn@3.1.1",
+  "scripts": {
+    "start": "nodemon",
+    "build": "tsc",
+    "test": "jest"
+  },
   "dependencies": {
     "@types/cors": "^2.8.13",
     "@types/request": "^2.48.8",
