@@ -2,7 +2,9 @@ import NodeCache from "node-cache";
 import { Result } from "@Common/logic";
 import { ICacheClient } from "./ICacheClient";
 import { WEATHER_CACHE_DURATION } from "@Common/config";
+import { injectable } from "inversify";
 
+@injectable()
 export class CacheClient implements ICacheClient {
   private cache: NodeCache;
 

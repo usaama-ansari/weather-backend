@@ -2,17 +2,17 @@ import "reflect-metadata";
 import { Container } from "inversify";
 import { WeatherClient, IWeatherClient } from "@Lib/WeatherClient";
 import { CacheClient, ICacheClient } from "@Lib/CacheClient";
-import { TYPES_IOC } from "./constants";
+import { IOC_TYPES } from "@Common/constants";
 
 const iocContainer = new Container();
 
 iocContainer
-  .bind<ICacheClient>(TYPES_IOC.CacheClient)
+  .bind<ICacheClient>(IOC_TYPES.CacheClient)
   .to(CacheClient)
   .inSingletonScope();
 
 iocContainer
-  .bind<IWeatherClient>(TYPES_IOC.WeatherClient)
+  .bind<IWeatherClient>(IOC_TYPES.WeatherClient)
   .to(WeatherClient)
   .inSingletonScope();
 
