@@ -1,5 +1,5 @@
 {
-  "name": "WeatherBackend",
+  "name": "weather-backend",
   "version": "1.0.0",
   "description": "backend for weather app",
   "main": "index.js",
