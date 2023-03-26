@@ -1,22 +1,25 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "esModuleInterop": true,
-      "target": "es6",
-      "noImplicitAny": true,
-      "moduleResolution": "node",
-      "types": ["reflect-metadata" /** for inversify js */, "node"],
-      "experimentalDecorators": true, // for inversify JS
-      "emitDecoratorMetadata": true, // for inversify JS
-      "sourceMap": true,
-      "outDir": "dist",
-      "baseUrl": "src",
-      "paths": {
-        "@Services/*": ["services/*"],
-      }
-    },
-  
-    "include": ["src/**/*", "index.ts"],
-    "exclude": ["./node_modules"]
-  }
-  
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "types": ["reflect-metadata" /** for inversify js */, "node"],
+    "experimentalDecorators": true, // for inversify JS
+    "emitDecoratorMetadata": true, // for inversify JS
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      "@Common/*": ["common/*"],
+      "@Controllers/*": ["controllers/*"],
+      "@Lib/*": ["lib/*"],
+      "@Services/*": ["services/*"],
+      "@Infra/*": ["infra/*"]
+    }
+  },
+
+  "include": ["src/**/*", "index.ts"],
+  "exclude": ["./node_modules"]
+}
