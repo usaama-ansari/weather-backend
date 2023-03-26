@@ -3,8 +3,6 @@ import { CacheClient, ICacheClient } from "@Lib/CacheClient";
 import { IWeatherClient, WeatherClient } from "@Lib/WeatherClient";
 import { iocContainer } from "@Infra/ioc";
 import { IOC_TYPES } from "@Common/constants"; 
+import { IWeatherService } from "@Services/WeatherService";
 
-const weatherClient = iocContainer.get<IWeatherClient>(IOC_TYPES.WeatherClient);
-
-
-
+const weatherService= iocContainer.get<IWeatherService>(IOC_TYPES.WeatherService);

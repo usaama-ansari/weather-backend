@@ -1,5 +1,11 @@
 export const IOC_TYPES = {
-    WeatherClient: Symbol.for("WeatherClient"),
-    CacheClient: Symbol.for("CacheClient"),
-  };
-  
+  /** ==================  Clients  ===================== */
+  WeatherClient: Symbol.for("WeatherClient"),
+  CacheClient: Symbol.for("CacheClient"),
+  /** ==================  Services ===================== */
+  WeatherService: Symbol.for("WeatherService"),
+  CityService: Symbol.for("CityService"),
+
+  /** ==================  Repositories ===================== */
+  CityRepository: Symbol.for("CityRepository"),
+};
