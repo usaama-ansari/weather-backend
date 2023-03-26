@@ -8,6 +8,7 @@ import { GenericObject } from "@Common/types";
 import { ApplicationError } from "@Common/errorUtils";
 import { inject, injectable } from "inversify";
 import { IOC_TYPES } from "@Common/constants";
+import { HttpStatusCodes } from "@Common/HttpStatusCodes";
 
 const CURRENT_WEATHER_ENDPOINT = `${WEATHER_API_ENDPOINT}/data/2.5/weather?`;
 const FIVE_DAYS_FORECAST_ENDPOINT = `${WEATHER_API_ENDPOINT}/data/2.5/forecast?`;
@@ -40,7 +41,7 @@ export class WeatherClient implements IWeatherClient {
       await this.cacheClient.addItem(`${cityName}:current`, currentWeather);
       return Result.ok<GenericObject>(currentWeather);
     } catch (err) {
-      return Result.fail(new ApplicationError(err.message, 502));
+      return Result.fail(new ApplicationError(err.message, HttpStatusCodes.BAD_REQUEST));
     }
   }
 
@@ -64,7 +65,7 @@ export class WeatherClient implements IWeatherClient {
       await this.cacheClient.addItem(`${cityName}:current`, forecastData);
       return Result.ok<GenericObject>(forecastData);
     } catch (err) {
-      return Result.fail(new ApplicationError(err.message, 502));
+      return Result.fail(new ApplicationError(err.message, HttpStatusCodes.BAD_REQUEST));
     }
   }
 }

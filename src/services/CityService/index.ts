@@ -6,6 +6,7 @@ import { ICityRepository } from "@Infra/dataAccess";
 import { Result } from "@Common/logic";
 import { ApplicationError } from "@Common/errorUtils";
 import { CityProps } from "@Common/types";
+import { HttpStatusCodes } from "@Common/HttpStatusCodes";
 
 @injectable()
 export class CityService implements ICityService {
@@ -20,7 +21,7 @@ export class CityService implements ICityService {
       await this.cityRepo.addCity(cityName);
       return Result.ok<void>();
     } catch (err) {
-      return Result.fail(new ApplicationError("Failed to add new City", 502));
+      return Result.fail(new ApplicationError("Failed to add new City", HttpStatusCodes.BAD_REQUEST));
     }
   }
 
@@ -29,7 +30,7 @@ export class CityService implements ICityService {
         const cities = await this.cityRepo.getAllCities();
         return Result.ok<Array<CityProps>>(cities)
     } catch (err) {
-      return Result.fail(new ApplicationError("Failed to fetch cities", 502));
+      return Result.fail(new ApplicationError("Failed to fetch cities", HttpStatusCodes.BAD_REQUEST));
     }
   }
 }
