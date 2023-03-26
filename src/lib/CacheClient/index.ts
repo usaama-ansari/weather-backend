@@ -1,12 +1,13 @@
 import NodeCache from "node-cache";
 import { Result } from "@Common/logic";
 import { ICacheClient } from "./ICacheClient";
+import { WEATHER_CACHE_DURATION } from "@Common/config";
 
 export class CacheClient implements ICacheClient {
   private cache: NodeCache;
 
   constructor() {
-    this.cache = new NodeCache({ stdTTL: 3000 });
+    this.cache = new NodeCache({ stdTTL: WEATHER_CACHE_DURATION });
   }
 
   async getItem(key: string) {
