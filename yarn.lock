@@ -1243,6 +1243,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"inversify@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "inversify@npm:6.0.1"
+  checksum: b6c9b56ef7817a71534b06101c2b0a0130b67c47a769f58794d9c0643591a83ac02be30a48c00cb729c0c83ece96dde369c419d48c32d0201c6cc7407629fbc5
+  languageName: node
+  linkType: hard
+
 "ip@npm:^2.0.0":
   version: 2.0.0
   resolution: "ip@npm:2.0.0"
@@ -2526,6 +2533,7 @@ __metadata:
     body-parser: ^1.20.2
     cors: ^2.8.5
     express: ^4.18.2
+    inversify: ^6.0.1
     mongoose: ^7.0.3
     nodemon: ^2.0.22
     reflect-metadata: ^0.1.13
