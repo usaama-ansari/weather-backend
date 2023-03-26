@@ -34,3 +34,5 @@ export class CacheClient implements ICacheClient {
     }
   }
 }
+
+export * from "./ICacheClient";

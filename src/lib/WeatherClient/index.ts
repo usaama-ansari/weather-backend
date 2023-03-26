@@ -64,3 +64,5 @@ export class WeatherClient implements IWeatherClient {
     }
   }
 }
+
+export * from "./IWeatherClient";
