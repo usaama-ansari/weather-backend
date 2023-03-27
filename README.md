@@ -3,6 +3,7 @@
  # Weather app Backend
   ----------------------------------------------------------------------------------------------
  ### Synopsis
+ NOTE: export `WEATHER_API_KEY` as environment variable and `NODE_ENV` as "development" for development mode
  This is backend for a Weather App. It uses the [open weather api's](https://openweathermap.org).
  It provides apis for following use cases:
  - To add city to the list of existing cities in database.
