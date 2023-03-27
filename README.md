@@ -56,11 +56,6 @@ Checkout to master
    - **mappers** - Data mappers to provide user specific data
    - **services** - application services that are used by controllers.
 ----------------------------------------------------------------------------------------------
-   - `{root-directory}/index.ts` file is where the `Server` is created and starts listening. The `Server` class is a custom class which abstracts the unlerlying `express` framework.
-   - The `Server` class bootstraps the **middlewares**, starts the **database** connection, configures the **IoC** container etc. You can  extend it further to bootstrap more infrastructure related mechanisms.
-   - The `Server` class registers middlewares via a `loadMiddlewares()` function exported by `~/src/shared/infra/middlewares` folder. All middlewares are supposed to be created in this folder and registered in `~/src/shared/infra/middlewares/index.ts` file's `loadMiddlewares()` function.
-   - Router is a type of middleware in express app. So the root router is registed as a middleware. Once the `Server` class calls the `loadMiddlewares` method the routing is in place. The `rootRouter` in `~/src/shared/infra/middlewares/routingMiddleware` imports nester routers from all modules, and bundles them with it. So all api requests go through this `rootRouter`.
-   
 
   # Path Aliases
  
