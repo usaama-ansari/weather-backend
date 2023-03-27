@@ -33,4 +33,3 @@ yarn-error.log*
 
 # env file for avoiding import hell
 .env
-env_script.sh
