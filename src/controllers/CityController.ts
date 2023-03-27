@@ -4,6 +4,7 @@ import { IOC_TYPES } from "@Common/constants";
 import { BaseController } from "./BaseController";
 import { ICityService } from "@Services/CityService";
 import { ApplicationError } from "@Common/errorUtils";
+import { CityProps, GenericObject } from "@Common/types";
 
 @injectable()
 export class CityController extends BaseController {
@@ -29,12 +30,13 @@ export class CityController extends BaseController {
     }
   }
 
-
   async fetchCities(req: Request, res: Response, next: NextFunction) {
     try {
       const result = await this.cityService.getCities();
       if (result.isSuccess) {
-        this.ok(res, result.getValue());
+        let cities = result.getValue() as CityProps[];
+        cities = cities.map((city: GenericObject) => city.name);
+        this.ok(res, cities);
       } else next(result.getValue() as ApplicationError);
     } catch (err) {
       next(err);
