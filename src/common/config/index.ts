@@ -9,5 +9,6 @@ export const CORS_CONFIG = {
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
 }
 
+export const BASE_ENDPOINT_V1 = "/api/v1/";
 export const SERVER_PORT = 8080;
 export const DB_OPTIONS = {};

@@ -8,4 +8,13 @@ export const IOC_TYPES = {
 
   /** ==================  Repositories ===================== */
   CityRepository: Symbol.for("CityRepository"),
+
+  /** ==================  Controllers ===================== */
+  CityController: Symbol.for("CityController"),
+  WeatherController: Symbol.for("WeatherController"),
+
+  /** ==================  Routers ===================== */
+  RootRouter: Symbol.for("RootRouter"),
+  CityRouter: Symbol.for("CityRouter"),
+  WeatherRouter: Symbol.for("WeatherRouter"),
 };

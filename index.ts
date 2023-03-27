@@ -6,5 +6,4 @@ import { Server } from "@Infra/Server";
 const app: Application = express();
 const server = new Server(app);
 const appBootstrapper = new AppBootstrapper(app, server);
-
 appBootstrapper.bootstrap();

@@ -12,8 +12,11 @@ import {
   DB_HOST,
   DB_OPTIONS,
   CORS_CONFIG,
+  BASE_ENDPOINT_V1,
 } from "@Common/config";
 import { ErrorHandler } from "@Common/errorUtils";
+import { RootRouter } from "@Infra/routers/RootRouter";
+import { IOC_TYPES } from "@Common/constants";
 
 export class AppBootstrapper {
   private readonly _app: Application;
@@ -45,25 +48,19 @@ export class AppBootstrapper {
   }
 
   private bootstrapMiddlewares() {
-    /** Resolving the first time here as the "composition-root" */
-    // const rootRouter = iocContainer.container.get<RootRouter>(
-    //   ROOT_TYPES.RootRouter
-    // );
-    // rootRouter.loadChildRouters();
+    /** NOTE: the order of middleware is important */
 
-    if (IS_DEV) {
-      this.app.use(cors(CORS_CONFIG));
-    }
+    if (IS_DEV) this.app.use(cors(CORS_CONFIG));
     this.app.use(bodyParser.json());
-    this.app.use(bodyParser.text());
-    this.app.use(
-      bodyParser.urlencoded({
-        extended: true,
-      })
-    );
-    /** This is where all routes are handles */
-    // this.app.use(rootRouter.routerInstance);
-    this.app.use(expressStatic(`${__dirname}/../../public`));
+    /** ========================  Lading router middleware ====================== */
+
+    /** Resolving dependencies the first time here as the "composition-root" */
+    const rootRouter = iocContainer.get<RootRouter>(IOC_TYPES.RootRouter);
+    rootRouter.loadAllRouters();
+    /** adding routerInstance as routing middleware */
+    this.app.use(BASE_ENDPOINT_V1, rootRouter.routerInstance);
+
+    /** ========================================================================= */
     /** 404 middleware should be after the router middleware is hooked up */
     this.app.use(_404Middleware);
     /** Error handling middleware should be in the last */
@@ -76,10 +73,10 @@ export class AppBootstrapper {
 
   private bootstrapGlobalErrorHandling() {
     process.on("uncaughtException", async (error: unknown) => {
-      // currently passing logger and reporter as null
+      // currently passing logger and reporter as null, as no requirement for logger and reporter yet
       const errorHandler = new ErrorHandler(null, null);
       await errorHandler.handleError(error);
-      if (!errorHandler.isTrustedError(error)) process.exit(1);
+      if (!errorHandler.isTrustedError(error)) process.exit(1); // exiting right away of something unexpected occurs
     });
 
     process.on("unhandledRejection", async (reason: unknown) => {
